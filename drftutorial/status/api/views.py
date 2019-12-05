@@ -45,23 +45,33 @@ class StatusAPIView(mixins.CreateModelMixin, generics.ListAPIView):
     #     serializer.save(user=self.request.user)
 
 
-class StatusDetailAPIView(mixins.DestroyModelMixin, mixins.UpdateModelMixin, generics.RetrieveAPIView):
+# Equivalent to the bellow class
+class StatusDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = []
     authentication_classes = []
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
-    lookup_field = 'id' # To define which url argument use
 
-    # def get_object(self, *args, **kwargs):
-    #     kwargs = self.kwargs
-    #     kw_id = kwargs.get('id')
-    #     return Status.objects.get(id=kw_id)
-
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
+# class StatusDetailAPIView(mixins.DestroyModelMixin, mixins.UpdateModelMixin, generics.RetrieveAPIView):
+#     permission_classes = []
+#     authentication_classes = []
+#     queryset = Status.objects.all()
+#     serializer_class = StatusSerializer
+#     lookup_field = 'id' # To define which url argument use
+#
+#     # def get_object(self, *args, **kwargs):
+#     #     kwargs = self.kwargs
+#     #     kw_id = kwargs.get('id')
+#     #     return Status.objects.get(id=kw_id)
+#
+#     def put(self, request, *args, **kwargs):
+#         return self.update(request, *args, **kwargs)
+#
+#     def patch(self, request, *args, **kwargs):
+#         return self.update(request, *args, **kwargs)
+#
+#     def delete(self, request, *args, **kwargs):
+#         return self.destroy(request, *args, **kwargs)
 
 
 
