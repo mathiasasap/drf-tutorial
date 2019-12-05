@@ -45,6 +45,21 @@ class StatusCreateAPIView(generics.CreateAPIView):
     #     serializer.save(user=self.request.user)
 
 
+class StatusDetailAPIView(generics.RetrieveAPIView):
+    permission_classes = []
+    authentication_classes = []
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer
+    lookup_field = 'id' # To define which url argument use
+
+    # def get_object(self, *args, **kwargs):
+    #     kwargs = self.kwargs
+    #     kw_id = kwargs.get('id')
+    #     return Status.objects.get(id=kw_id)
+
+
+
+
 
 
 
