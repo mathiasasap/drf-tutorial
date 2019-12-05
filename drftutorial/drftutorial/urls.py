@@ -16,9 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from drftutorial.status.api import urls as status_urls
+from status.api import urls as api_status_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/status/', include(status_urls)),
+    path('api/status/', include(api_status_urls)),
 ]
