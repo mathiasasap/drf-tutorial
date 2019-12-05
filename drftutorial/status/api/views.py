@@ -11,4 +11,5 @@ class StatusListSearchAPIView(APIView):
 
     def get(self, request, format=None):
         qs = Status.objects.all()
-        return Response(qs)
+        serializer = StatusSerializer(qs, many=True)
+        return Response(serializer.data)
