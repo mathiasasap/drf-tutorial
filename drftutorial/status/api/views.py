@@ -58,6 +58,20 @@ class StatusDetailAPIView(generics.RetrieveAPIView):
     #     return Status.objects.get(id=kw_id)
 
 
+class StatusUpdateAPIView(generics.UpdateAPIView):
+    permission_classes = []
+    authentication_classes = []
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer
+    lookup_field = 'id' # To define which url argument use
+
+
+class StatusDeleteAPIView(generics.DestroyAPIView):
+    permission_classes = []
+    authentication_classes = []
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer
+    lookup_field = 'id' # To define which url argument use
 
 
 
