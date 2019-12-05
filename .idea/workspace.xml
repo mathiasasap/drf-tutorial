@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91c56cbd-c262-458e-8df5-9d8436720cda" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drftutorial/status/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/drftutorial/status/api/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drftutorial/status/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/drftutorial/status/api/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575317963491</updated>
-      <workItem from="1575573602222" duration="579000" />
+      <workItem from="1575573602222" duration="1396000" />
     </task>
     <servers />
   </component>

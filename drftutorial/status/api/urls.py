@@ -1,8 +1,9 @@
 from django.conf.urls import url
 
 from .views import StatusListSearchAPIView
+from .views import StatusAPIView
 
 
 urlpatterns = [
-    url(r'^$', StatusListSearchAPIView.as_view()),
+    url(r'^$', StatusAPIView.as_view()),
 ]
