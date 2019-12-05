@@ -26,3 +26,10 @@ class StatusAPIView(generics.ListAPIView):
     authentication_classes = []
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
+
+    def get_queryset(self):
+        qs = Status.objects.all()
+        query = self.request.GET.get('q')
+        if query is not None:
+            qs = qs.filter(content__icontains=query)
+        return qs
