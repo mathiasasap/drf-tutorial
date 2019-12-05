@@ -3,8 +3,8 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 
 
-from .serializers import StatusSerializer
-from status.models import Status
+from drftutorial.status.api.serializers import StatusSerializer
+from drftutorial.status.models import Status
 
 '''
 Serialize a single object
@@ -40,7 +40,7 @@ data = {'user': 1}
 serializer = StatusSerializer(data=data)
 serializer.is_valid()
 
-if serializer.is_valid(():
+if serializer.is_valid():
     serializer.save()
 
 
