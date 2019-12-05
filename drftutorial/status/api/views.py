@@ -23,6 +23,7 @@ class StatusListSearchAPIView(APIView):
 
 # CreateModelMixin --- post data
 # UpdateModelMixin --- put data
+# DestroyModelMixin --- delete data
 
 class StatusAPIView(mixins.CreateModelMixin, generics.ListAPIView):
     permission_classes = []
@@ -44,7 +45,7 @@ class StatusAPIView(mixins.CreateModelMixin, generics.ListAPIView):
     #     serializer.save(user=self.request.user)
 
 
-class StatusDetailAPIView(generics.RetrieveAPIView):
+class StatusDetailAPIView(mixins.DestroyModelMixin, mixins.UpdateModelMixin, generics.RetrieveAPIView):
     permission_classes = []
     authentication_classes = []
     queryset = Status.objects.all()
@@ -56,21 +57,12 @@ class StatusDetailAPIView(generics.RetrieveAPIView):
     #     kw_id = kwargs.get('id')
     #     return Status.objects.get(id=kw_id)
 
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
 
-class StatusUpdateAPIView(generics.UpdateAPIView):
-    permission_classes = []
-    authentication_classes = []
-    queryset = Status.objects.all()
-    serializer_class = StatusSerializer
-    lookup_field = 'id' # To define which url argument use
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
 
-
-class StatusDeleteAPIView(generics.DestroyAPIView):
-    permission_classes = []
-    authentication_classes = []
-    queryset = Status.objects.all()
-    serializer_class = StatusSerializer
-    lookup_field = 'id' # To define which url argument use
 
 
 
