@@ -2,6 +2,8 @@ from rest_framework import generics, mixins
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
+import json
+from utils.json import is_json
 
 from status.models import Status
 from .serializers import StatusSerializer
@@ -37,6 +39,7 @@ class StatusAPIView(
     authentication_classes = []
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
+    passed_id = None
 
     def get_queryset(self):
         qs = Status.objects.all()
@@ -47,7 +50,7 @@ class StatusAPIView(
 
     def get_object(self):
         request = self.request
-        passed_id = request.GET.get('id')
+        passed_id = request.GET.get('id') or self.passed_id
         qs = self.get_queryset()
         obj = None
         if passed_id is not None:
@@ -56,9 +59,17 @@ class StatusAPIView(
         return obj
 
     def get(self, request, *args, **kwargs):
-        passed_id = request.GET.get('id')
-        # request.body
+        url_passed_id = request.GET.get('id', None)
+        json_data = {}
+        body_ = request.body
+        print(body_)
+        if is_json(body_):
+            print("Is json")
+            json_data = json.loads(request.body)
+        new_passed_id = json_data.get('id', None)
         # request.data
+        passed_id = url_passed_id or new_passed_id or None
+        print(passed_id)
         if passed_id is not None:
             return self.retrieve(self, *args, **kwargs)
         return super().get(request, *args, **kwargs)
