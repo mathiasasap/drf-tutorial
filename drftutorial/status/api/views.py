@@ -58,6 +58,11 @@ class StatusAPIView(
             self.check_object_permissions(request, obj)
         return obj
 
+    def perform_destroy(self, instance):
+        if instance is not None:
+            return instance.delete()
+        return None
+
     def get(self, request, *args, **kwargs):
         url_passed_id = request.GET.get('id', None)
         json_data = {}

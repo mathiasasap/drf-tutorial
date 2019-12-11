@@ -2,9 +2,11 @@ from rest_framework import serializers
 
 from status.models import Status
 
+
 class CustomSerializer(serializers.Serializer):
     content = serializers.CharField()
     email = serializers.EmailField()
+
 
 class StatusSerializer(serializers.ModelSerializer):
     class Meta:

@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91c56cbd-c262-458e-8df5-9d8436720cda" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/drftutorial/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drftutorial/utils/json.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drftutorial/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/drftutorial/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drftutorial/status/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/drftutorial/status/api/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drftutorial/status/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/drftutorial/status/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/cfe_rest_framework_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/cfe_rest_framework_api.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1575317963491</updated>
       <workItem from="1575573602222" duration="3209000" />
-      <workItem from="1576072745477" duration="4025000" />
+      <workItem from="1576072745477" duration="4342000" />
     </task>
     <servers />
   </component>
