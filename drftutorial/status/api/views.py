@@ -1,4 +1,4 @@
-from rest_framework import generics, mixins
+from rest_framework import generics, mixins, permissions
 from rest_framework.authentication import SessionAuthentication
 from django.shortcuts import get_object_or_404
 import json
@@ -28,11 +28,12 @@ from .serializers import StatusSerializer
 # DestroyModelMixin --- delete data
 
 
+# Login required mixin / decorator
 class StatusAPIView(
     mixins.CreateModelMixin,
     generics.ListAPIView
 ):
-    permission_classes = []
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     authentication_classes = [SessionAuthentication]
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
