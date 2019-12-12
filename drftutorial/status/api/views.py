@@ -1,6 +1,5 @@
 from rest_framework import generics, mixins
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from rest_framework.authentication import SessionAuthentication
 from django.shortcuts import get_object_or_404
 import json
 from utils.json import is_json
@@ -34,32 +33,19 @@ class StatusAPIView(
     generics.ListAPIView
 ):
     permission_classes = []
-    authentication_classes = []
+    authentication_classes = [SessionAuthentication]
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
     passed_id = None
 
     def get_queryset(self):
+        request = self.request
+        # print(request.user)
         qs = Status.objects.all()
-        query = self.request.GET.get('q')
+        query = request.GET.get('q')
         if query is not None:
             qs = qs.filter(content__icontains=query)
         return qs
-
-    def get_object(self):
-        request = self.request
-        passed_id = request.GET.get('id') or self.passed_id
-        qs = self.get_queryset()
-        obj = None
-        if passed_id is not None:
-            obj = get_object_or_404(qs, id=passed_id)
-            self.check_object_permissions(request, obj)
-        return obj
-
-    def perform_destroy(self, instance):
-        if instance is not None:
-            return instance.delete()
-        return None
 
     def get(self, request, *args, **kwargs):
         url_passed_id = request.GET.get('id', None)
@@ -80,8 +66,8 @@ class StatusAPIView(
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
-    # def perform_create(self, serializer):
-    #     serializer.save(user=self.request.user)
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class StatusAPIDetailView(mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.RetrieveAPIView):
