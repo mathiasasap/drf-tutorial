@@ -33,8 +33,9 @@ class StatusAPIView(
     mixins.CreateModelMixin,
     generics.ListAPIView
 ):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    authentication_classes = [SessionAuthentication]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    # authentication_classes = [SessionAuthentication]
+    # Commented because they are the default permission and auth classes defined in restconf folder
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
     passed_id = None
