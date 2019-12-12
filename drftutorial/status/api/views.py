@@ -31,9 +31,6 @@ from .serializers import StatusSerializer
 
 class StatusAPIView(
     mixins.CreateModelMixin,
-    mixins.RetrieveModelMixin,
-    mixins.UpdateModelMixin,
-    mixins.DestroyModelMixin,
     generics.ListAPIView
 ):
     permission_classes = []
@@ -82,15 +79,6 @@ class StatusAPIView(
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
-
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, *kwargs)
-
-    def patch(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
 
     # def perform_create(self, serializer):
     #     serializer.save(user=self.request.user)
